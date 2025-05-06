@@ -31,6 +31,9 @@ jobs:
         uses: ./.github/actions/maven_build
       - name: Create docker image
         uses: ./.github/actions/docker_build
+        with:
+          image_name: "academy"
+          tag_name: '1.0.0'
 #      - name: Create docker image
 #        run: docker build . --file Dockerfile --tag academy:$(date +%s)
 #      - name: Check if docker image is created
