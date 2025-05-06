@@ -1,5 +1,5 @@
-name: Run echo
-description: Run echo with "Update me with the necessary commands"
+name: Run Maven build
+description: Maven build
 runs:
   using: composite
   steps:
