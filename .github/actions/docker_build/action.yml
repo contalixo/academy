@@ -24,6 +24,3 @@ runs:
         fi
         docker build . --file ${{inputs.path_dockerfile}} --tag ${{inputs.image_name}}:$TAG
       shell: bash
-    - name: Check if docker image is created
-      run: docker image ls
-      shell: bash
