@@ -17,6 +17,7 @@ on:
 env:
   image_name: "academy"
   tag_name: '1.0.0'
+  artifact_name: my-cicd-artifact
 
 jobs:
   build:
@@ -42,7 +43,7 @@ jobs:
         run: docker save -o ${{env.image_name}}.tar ${{env.image_name}}:${{env.tag_name}}
       - uses: actions/upload-artifact@v4
         with:
-          name: my-cicd-image
+          name: ${{env.artifact_name}}
           path: ${{env.image_name}}.tar
 
   dockerls:
@@ -51,7 +52,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: my-cicd-image
+          name: ${{env.artifact_name}}
       - run: docker load -i ${{env.image_name}}.tar
       - name: Check if docker image is created
         run: docker image ls
