@@ -1,0 +1,8 @@
+name: Run echo
+description: Run echo with "Update me with the necessary commands"
+runs:
+  using: composite
+  steps:
+    - run: |
+        mvn -B package --file pom.xml
+      shell: bash
