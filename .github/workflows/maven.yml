@@ -30,6 +30,6 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Create docker image
-      run: |
-        docker build . --file Dockerfile --tag academy:$(date +%s)
-        docker image ls
+      run: docker build . --file Dockerfile --tag academy:$(date +%s)
+    - name: Check if docker image is created
+      run: docker image ls
