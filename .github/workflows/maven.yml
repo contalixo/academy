@@ -9,11 +9,21 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+#  push:
+#    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run tests against'
+        type: choice
+        options:
+          - Test
+          - Int
+          - E2E
+          - Prod
+        required: true
 
 env:
   image_name: "academy"
@@ -73,6 +83,7 @@ jobs:
   dockerls:
     runs-on: ubuntu-latest
     needs: build
+    environment: Int
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
