@@ -37,6 +37,7 @@ jobs:
 
   dockerls:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Check if docker image is created
         run: docker image ls
